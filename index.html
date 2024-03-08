@@ -1,0 +1,46 @@
+<html>
+<head>
+<title> Motivation app by Kamal sir </title>
+<style>
+  * {
+    font-size: 60px;
+    font-family: Calibri;
+  }
+
+  h2 {
+    border: solid;
+    width: 70%;
+    color: white;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  body {
+    background-image: url("im3.jpg");
+  }
+</style>
+<script>
+  function gm() {
+    event.preventDefault();
+    let msg = document.getElementById("msg");
+    let url = "https://api.quotable.io/quotes/random";
+    fetch(url)
+      .then(res => res.json())
+      .then(data => (msg.innerHTML = data[0]["content"] + " - " + data[0]["author"]))
+      .catch(err => (msg.innerHTML = "issue " + err));
+  }
+</script>
+</head>
+
+<body>
+  <center>
+    <h1>Motivational Msg App</h1>
+    <form onsubmit="gm()">
+      <input type="submit" value="Get msg" />
+    </form>
+    <h2 id="msg"></h2>
+  </center>
+</body>
+</html>
